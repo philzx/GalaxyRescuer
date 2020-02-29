@@ -145,7 +145,7 @@ public class Player implements Movable, KeyboardHandler {
     }
 
     @Override
-    public Position move() {
+    public void move() {
 
         if (this.up) {
 
@@ -183,9 +183,9 @@ public class Player implements Movable, KeyboardHandler {
 
         }
 
-        this.getPos().updateCol(xSpeed);
-        this.getPos().updateCol(ySpeed);
-        return this.getPos();
+        position.updateCol(xSpeed);
+        position.updateRow(ySpeed);
+
     }
 
     public void land() {

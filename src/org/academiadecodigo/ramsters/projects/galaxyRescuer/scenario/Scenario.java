@@ -7,6 +7,8 @@ public abstract class Scenario {
     private Scenario scenario;
     private boolean active;
 
+    private Rectangle canvas;
+
 
     public Scenario() {
 
