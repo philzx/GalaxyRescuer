@@ -4,7 +4,14 @@ public class Position {
 
     private int col;
     private int row;
+    private Grid grid;
 
+
+    public Position(int col, int row) {
+        this.col = col;
+        this.row = row;
+        this.grid = new Grid();
+    }
 
     public int getCol() {
 
