@@ -68,9 +68,9 @@ public class Grid {
 
     }
 
-    public Position makeGridPosition() {
+    public Position makeGridPosition(int cols, int rows) {
 
-        return new Position();
+        return new Position(cols,rows,this);
 
     }
 

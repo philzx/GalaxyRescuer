@@ -11,10 +11,10 @@ public class Position {
     private Rectangle rectange;
 
 
-    public Position(int col, int row) {
+    public Position(int col, int row, Grid grid) {
         this.col = col;
         this.row = row;
-        this.grid = new Grid();
+        this.grid = grid;
     }
 
     public int getCol() {
