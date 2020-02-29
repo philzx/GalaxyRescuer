@@ -3,7 +3,7 @@ package org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioEl
 
 public class AsteroidFactory {
 
-    private int asteroidNUmber;
+    private int asteroidNumber;
 
     public Asteroid createAsteroid() {
 
