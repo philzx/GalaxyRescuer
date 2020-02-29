@@ -6,7 +6,7 @@ public class Grid {
 
     public static final int PADDING = 10;
 
-    private final int cellSize = 25;
+    private final int cellSize = 15;
     private int cols;
     private int rows;
 
@@ -68,11 +68,11 @@ public class Grid {
 
     }
 
-    public Position makeGridPosition() {
+    /*public Position makeGridPosition() {
 
         return new Position();
 
-    }
+    }*/
 
     public int rowToY(int row) {
 

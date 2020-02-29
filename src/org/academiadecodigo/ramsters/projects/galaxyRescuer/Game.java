@@ -14,11 +14,23 @@ public class Game {
 
     public void init() {
 
+        this.grid = new Grid(40, 60);
+
+        this.player = new Player(this.grid);
+
     }
 
     public void start() {
 
+        this.grid.init();
 
+        this.player.init();
+
+        while (true) {
+
+            player.move();
+
+        }
 
     }
 

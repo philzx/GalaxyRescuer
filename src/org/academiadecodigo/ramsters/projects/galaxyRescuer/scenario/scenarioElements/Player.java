@@ -36,40 +36,63 @@ public class Player implements Movable, KeyboardHandler {
         this.grid = grid;
 
         this.keyboard = new Keyboard(this);
-        this.rectangle = new Rectangle(grid.getWidth() / 2, grid.getHeight() - Grid.PADDING, grid.getCellSize(), grid.getCellSize());
+
+        this.position = new Position(this.grid.getCols()/2, this.grid.getRows(), this.grid);
+
+        this.rectangle = new Rectangle(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), this.grid.getCellSize(), this.grid.getCellSize());
+
+        this.position.setRectange(this.rectangle);
 
     }
 
     public void init() {
 
-        rectangle.setColor(Color.BLACK);
+        rectangle.setColor(Color.WHITE);
         rectangle.fill();
 
-        KeyboardEvent upKey = new KeyboardEvent();
-        KeyboardEvent downKey = new KeyboardEvent();
-        KeyboardEvent leftKey = new KeyboardEvent();
-        KeyboardEvent rightKey = new KeyboardEvent();
+        KeyboardEvent upPressed = new KeyboardEvent();
+        KeyboardEvent upReleased = new KeyboardEvent();
 
-        upKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        upKey.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        upKey.setKey(KeyboardEvent.KEY_UP);
+        KeyboardEvent downPressed = new KeyboardEvent();
+        KeyboardEvent downReleased = new KeyboardEvent();
 
-        downKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        downKey.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        downKey.setKey(KeyboardEvent.KEY_DOWN);
+        KeyboardEvent leftPressed = new KeyboardEvent();
+        KeyboardEvent leftReleased = new KeyboardEvent();
 
-        leftKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        leftKey.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        leftKey.setKey(KeyboardEvent.KEY_LEFT);
+        KeyboardEvent rightPressed = new KeyboardEvent();
+        KeyboardEvent rightReleased = new KeyboardEvent();
 
-        rightKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        rightKey.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        rightKey.setKey(KeyboardEvent.KEY_RIGHT);
+        upPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        upReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        upPressed.setKey(KeyboardEvent.KEY_UP);
+        upReleased.setKey(KeyboardEvent.KEY_UP);
 
-        keyboard.addEventListener(upKey);
-        keyboard.addEventListener(downKey);
-        keyboard.addEventListener(leftKey);
-        keyboard.addEventListener(rightKey);
+        downPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        downReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        downPressed.setKey(KeyboardEvent.KEY_DOWN);
+        downReleased.setKey(KeyboardEvent.KEY_DOWN);
+
+        leftPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        leftReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        leftPressed.setKey(KeyboardEvent.KEY_LEFT);
+        leftReleased.setKey(KeyboardEvent.KEY_LEFT);
+
+        rightPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        rightReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        rightPressed.setKey(KeyboardEvent.KEY_RIGHT);
+        rightReleased.setKey(KeyboardEvent.KEY_RIGHT);
+
+        keyboard.addEventListener(upPressed);
+        keyboard.addEventListener(upReleased);
+
+        keyboard.addEventListener(downPressed);
+        keyboard.addEventListener(downReleased);
+
+        keyboard.addEventListener(leftPressed);
+        keyboard.addEventListener(leftReleased);
+
+        keyboard.addEventListener(rightPressed);
+        keyboard.addEventListener(rightReleased);
 
     }
 
@@ -184,11 +207,9 @@ public class Player implements Movable, KeyboardHandler {
         }
 
         position.updateCol(xSpeed);
+
         position.updateRow(ySpeed);
 
     }
 
-    public void land() {
-
-    }
 }

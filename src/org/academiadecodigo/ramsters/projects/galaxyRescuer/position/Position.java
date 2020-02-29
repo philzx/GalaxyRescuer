@@ -8,13 +8,17 @@ public class Position {
     private int col;
     private int row;
     private Grid grid;
-    private Rectangle rectange;
+    private Rectangle rectangle;
 
 
-    public Position(int col, int row) {
+    public Position(int col, int row, Grid grid) {
+
         this.col = col;
+
         this.row = row;
-        this.grid = new Grid();
+
+        this.grid = grid;
+
     }
 
     public int getCol() {
@@ -35,7 +39,7 @@ public class Position {
 
         int width = grid.colToX(col);
 
-        rectange.translate(width, 0);
+        rectangle.translate(width, 0);
 
     }
 
@@ -45,8 +49,13 @@ public class Position {
 
         int height = grid.rowToY(row);
 
-        rectange.translate(0, height);
+        rectangle.translate(0, height);
 
     }
 
+    public void setRectange(Rectangle rectange) {
+
+        this.rectangle = rectange;
+
+    }
 }

@@ -5,8 +5,8 @@ public class AsteroidFactory {
 
     private int asteroidNumber;
 
-    public Asteroid createAsteroid() {
+    /*public Asteroid createAsteroid() {
 
-    }
+    }*/
 
 }

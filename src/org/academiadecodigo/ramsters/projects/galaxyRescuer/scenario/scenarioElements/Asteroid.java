@@ -11,7 +11,7 @@ public class Asteroid implements Movable {
     }
 
     @Override
-    public Position move() {
+    public void move() {
 
     }
 }
