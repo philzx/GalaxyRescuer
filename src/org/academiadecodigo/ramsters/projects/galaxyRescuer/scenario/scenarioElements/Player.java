@@ -16,10 +16,12 @@ public class Player implements Movable, KeyboardHandler {
     private Position position;
     private int xSpeed;
     private int ySpeed;
+
     private boolean up;
     private boolean down;
     private boolean left;
     private boolean right;
+
     private Keyboard keyboard;
     private Rectangle rectangle;
     private Grid grid;
@@ -28,6 +30,7 @@ public class Player implements Movable, KeyboardHandler {
 
         this.xSpeed = 0;
         this.ySpeed = 0;
+
         this.up = false;
         this.down = false;
         this.left = false;
@@ -41,13 +44,13 @@ public class Player implements Movable, KeyboardHandler {
 
         this.rectangle = new Rectangle(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), this.grid.getCellSize(), this.grid.getCellSize());
 
-        this.position.setRectange(this.rectangle);
+        this.position.setRectangle(this.rectangle);
 
     }
 
     public void init() {
 
-        rectangle.setColor(Color.WHITE);
+        rectangle.setColor(Color.GREEN);
         rectangle.fill();
 
         KeyboardEvent upPressed = new KeyboardEvent();
@@ -110,11 +113,15 @@ public class Player implements Movable, KeyboardHandler {
 
                 this.up = true;
 
+                move();
+
                 break;
 
             case KeyboardEvent.KEY_DOWN:
 
                 this.down = true;
+
+                move();
 
                 break;
 
@@ -122,11 +129,15 @@ public class Player implements Movable, KeyboardHandler {
 
                 this.left = true;
 
+                move();
+
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
 
                 this.right = true;
+
+                move();
 
                 break;
 
@@ -143,11 +154,15 @@ public class Player implements Movable, KeyboardHandler {
 
                 this.up = false;
 
+                move();
+
                 break;
 
             case KeyboardEvent.KEY_DOWN:
 
                 this.down = false;
+
+                move();
 
                 break;
 
@@ -155,11 +170,15 @@ public class Player implements Movable, KeyboardHandler {
 
                 this.left = false;
 
+                move();
+
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
 
                 this.right = false;
+
+                move();
 
                 break;
 
@@ -173,42 +192,31 @@ public class Player implements Movable, KeyboardHandler {
         if (this.up) {
 
             ySpeed = -1;
+            position.updateRow(ySpeed);
 
         }
 
         if (this.down) {
 
             ySpeed = 1;
+            position.updateRow(ySpeed);
 
         }
 
-        if (!this.up || !this.down) {
-
-            ySpeed = 0;
-
-        }
 
         if (this.left) {
 
             xSpeed = -1;
+            position.updateCol(xSpeed);
 
         }
 
         if (this.right) {
 
             xSpeed = 1;
+            position.updateCol(xSpeed);
 
         }
-
-        if (!this.left || !this.right) {
-
-            xSpeed = 0;
-
-        }
-
-        position.updateCol(xSpeed);
-
-        position.updateRow(ySpeed);
 
     }
 

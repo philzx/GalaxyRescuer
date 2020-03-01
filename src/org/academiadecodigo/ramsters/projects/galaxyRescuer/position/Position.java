@@ -53,9 +53,9 @@ public class Position {
 
     }
 
-    public void setRectange(Rectangle rectange) {
+    public void setRectangle(Rectangle rectangle) {
 
-        this.rectangle = rectange;
+        this.rectangle = rectangle;
 
     }
 }

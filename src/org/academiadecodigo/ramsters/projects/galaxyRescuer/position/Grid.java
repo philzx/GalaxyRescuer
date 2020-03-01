@@ -1,5 +1,6 @@
 package org.academiadecodigo.ramsters.projects.galaxyRescuer.position;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Grid {
@@ -22,6 +23,7 @@ public class Grid {
 
     public void init() {
 
+        field.setColor(Color.WHITE);
         field.fill();
 
     }
@@ -76,13 +78,13 @@ public class Grid {
 
     public int rowToY(int row) {
 
-        return PADDING + row * cellSize;
+        return row * cellSize;
 
     }
 
     public int colToX(int col) {
 
-        return PADDING + col * cellSize;
+        return col * cellSize;
 
     }
 

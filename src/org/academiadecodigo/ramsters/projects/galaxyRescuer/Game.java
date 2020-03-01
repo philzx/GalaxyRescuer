@@ -14,7 +14,7 @@ public class Game {
 
     public void init() {
 
-        this.grid = new Grid(40, 60);
+        this.grid = new Grid(20, 30);
 
         this.player = new Player(this.grid);
 
@@ -25,12 +25,6 @@ public class Game {
         this.grid.init();
 
         this.player.init();
-
-        while (true) {
-
-            player.move();
-
-        }
 
     }
 
