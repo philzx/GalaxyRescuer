@@ -14,13 +14,15 @@ public class Asteroid implements Movable {
     private Grid grid;
     private Rectangle rectangle;
 
+    private int col;
+
     public Asteroid(Grid grid) {
 
         this.grid = grid;
 
         int row = decrementedRow;
 
-        int col = (int) (Math.ceil(Math.random() * this.grid.getCols()));
+        col = (int) (Math.ceil(Math.random() * this.grid.getCols()));
 
         this.position = new Position(col, row, this.grid);
 
@@ -31,6 +33,7 @@ public class Asteroid implements Movable {
         this.position.setRectangle(this.rectangle);
 
     }
+
 
     public void init() {
 
@@ -46,6 +49,8 @@ public class Asteroid implements Movable {
         if (position.getRow() >= grid.getRows()) {
 
             position.setRow(0);
+
+            position.setCol((int) (Math.ceil(Math.random() * this.grid.getCols())));
 
             return;
 

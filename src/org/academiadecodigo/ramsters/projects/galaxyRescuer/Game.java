@@ -18,7 +18,7 @@ public class Game {
 
     public void init() {
 
-        this.grid = new Grid(20, 40);
+        this.grid = new Grid(20, 50);
 
         this.player = new Player(this.grid);
 
@@ -34,7 +34,7 @@ public class Game {
 
         this.player.init();
 
-        this.asteroids = this.asteroidFactory.createAsteroid(20, this.grid);
+        this.asteroids = this.asteroidFactory.createAsteroid((this.grid.getRows() / 2) - 1, this.grid);
 
         for (Asteroid each: asteroids){
 
@@ -47,7 +47,7 @@ public class Game {
 
             for (Asteroid each : asteroids) {
 
-                Thread.sleep(2);
+                Thread.sleep(1);
 
                 //each.init();
 

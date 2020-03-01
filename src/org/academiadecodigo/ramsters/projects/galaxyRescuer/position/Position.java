@@ -43,6 +43,18 @@ public class Position {
 
     }
 
+    public void setCol(int col) {
+
+        int previousWidth = grid.colToX(this.col);
+
+        this.col = col;
+
+        int width = grid.colToX(col);
+
+        rectangle.translate(width - previousWidth, 0);
+
+    }
+
     public void updateCol(int col) {
 
         this.col += col;
