@@ -24,6 +24,8 @@ public class Game {
 
         this.asteroidFactory = new AsteroidFactory();
 
+        this.contactDetector = new ContactDetector();
+
     }
 
     public void start() throws InterruptedException {
@@ -34,18 +36,24 @@ public class Game {
 
         this.asteroids = this.asteroidFactory.createAsteroid(20, this.grid);
 
+        for (Asteroid each: asteroids){
+
+            each.init();
+
+        }
+
+
         while (true) {
 
             for (Asteroid each : asteroids) {
 
                 Thread.sleep(2);
 
-                each.init();
+                //each.init();
 
                 each.move();
 
-                System.out.println(each.getPosition().getRow());
-
+                contactDetector.checkForCrashed(this.player, each);
 
             }
 

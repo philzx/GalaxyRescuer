@@ -45,8 +45,6 @@ public class Asteroid implements Movable {
 
         if (position.getRow() >= grid.getRows()) {
 
-            System.out.println("IM IN BITCH");
-
             position.setRow(0);
 
             return;
@@ -58,6 +56,9 @@ public class Asteroid implements Movable {
     }
 
     public Position getPosition() {
+
         return position;
+
     }
+
 }

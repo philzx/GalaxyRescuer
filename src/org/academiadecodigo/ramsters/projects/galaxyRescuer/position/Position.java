@@ -68,4 +68,14 @@ public class Position {
         this.rectangle = rectangle;
 
     }
+
+    @Override
+    public boolean equals(Object pos) {
+
+        if (((Position) pos).getCol() == this.getCol() && ((Position) pos).getRow() == this.getRow()){
+         return true;
+        }
+    return false;
+    }
+
 }
