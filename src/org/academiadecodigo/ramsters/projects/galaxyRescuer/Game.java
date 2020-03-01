@@ -18,7 +18,7 @@ public class Game {
 
     public void init() {
 
-        this.grid = new Grid(20, 30);
+        this.grid = new Grid(20, 40);
 
         this.player = new Player(this.grid);
 
@@ -34,21 +34,21 @@ public class Game {
 
         this.asteroids = this.asteroidFactory.createAsteroid(20, this.grid);
 
-        for (int i = 0; i < 200; i++) {
+        while (true) {
 
             for (Asteroid each : asteroids) {
 
-                Thread.sleep(5);
+                Thread.sleep(2);
 
                 each.init();
 
                 each.move();
 
-                
+                System.out.println(each.getPosition().getRow());
+
 
             }
 
-            System.out.println("HIHIHIHIHI");
         }
 
     }

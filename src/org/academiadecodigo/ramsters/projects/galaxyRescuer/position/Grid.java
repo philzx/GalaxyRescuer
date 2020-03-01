@@ -23,7 +23,7 @@ public class Grid {
 
     public void init() {
 
-        field.setColor(Color.WHITE);
+        field.setColor(Color.BLACK);
         field.fill();
 
     }

@@ -33,6 +33,16 @@ public class Position {
 
     }
 
+    public void setRow(int row) {
+
+        this.row = row;
+
+        int height = grid.getHeight();
+
+        rectangle.translate(0, - height);
+
+    }
+
     public void updateCol(int col) {
 
         this.col += col;

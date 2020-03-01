@@ -12,12 +12,9 @@ public class Asteroid implements Movable {
 
     private Position position;
     private Grid grid;
-    private int moveCounter;
     private Rectangle rectangle;
 
     public Asteroid(Grid grid) {
-
-        moveCounter = 0;
 
         this.grid = grid;
 
@@ -37,7 +34,7 @@ public class Asteroid implements Movable {
 
     public void init() {
 
-        rectangle.setColor(Color.RED);
+        rectangle.setColor(Color.YELLOW);
 
         rectangle.fill();
 
@@ -46,7 +43,21 @@ public class Asteroid implements Movable {
     @Override
     public void move() {
 
+        if (position.getRow() >= grid.getRows()) {
+
+            System.out.println("IM IN BITCH");
+
+            position.setRow(0);
+
+            return;
+
+        }
+
         position.updateRow(1);
 
+    }
+
+    public Position getPosition() {
+        return position;
     }
 }
