@@ -12,7 +12,7 @@ public class ContactDetector {
 
         if (asteroid.getPosition().equals(player.getPosition())) {
 
-            player.getRectangle().setColor(Color.PINK);
+            //player.getRectangle().setColor(Color.PINK);
 
             player.getRectangle().fill();
 

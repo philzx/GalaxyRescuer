@@ -110,6 +110,9 @@ public class Game implements KeyboardHandler {
 
 
         while (!(contactDetector.getCrashDetected())) {
+            Thread.sleep(35);
+
+            player.move();
 
             for (Asteroid each : asteroids) {
 
@@ -128,10 +131,10 @@ public class Game implements KeyboardHandler {
 
         this.player.getRectangle().delete();
 
-        while (!this.restart) {
-            Thread.sleep(1);
-            if (restart) {
-                reset();
+                while (!this.restart) {
+                    Thread.sleep(1);
+                    if (restart) {
+                        reset();
             }
         }
 
