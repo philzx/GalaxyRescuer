@@ -1,6 +1,7 @@
 package org.academiadecodigo.ramsters.projects.galaxyRescuer.position;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
 public class Position {
@@ -9,7 +10,7 @@ public class Position {
     private int row;
     private Grid grid;
     private Rectangle rectangle;
-
+    private Picture picture;
 
     public Position(int col, int row, Grid grid) {
 
@@ -19,6 +20,10 @@ public class Position {
 
         this.grid = grid;
 
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
 
     public int getCol() {
@@ -40,6 +45,7 @@ public class Position {
         int height = grid.getHeight();
 
         rectangle.translate(0, - height);
+        picture.translate(0, -height);
 
     }
 
@@ -52,6 +58,7 @@ public class Position {
         int height = grid.rowToY(row);
 
         rectangle.translate(0, height - previousHeight);
+        picture.translate(0, height - previousHeight);
     }
 
     public void setCol(int col) {
@@ -63,6 +70,7 @@ public class Position {
         int width = grid.colToX(col);
 
         rectangle.translate(width - previousWidth, 0);
+        picture.translate(width - previousWidth, 0);
 
     }
 
@@ -73,6 +81,7 @@ public class Position {
         int width = grid.colToX(col);
 
         rectangle.translate(width, 0);
+        picture.translate(width, 0);
 
     }
 
@@ -83,6 +92,7 @@ public class Position {
         int height = grid.rowToY(row);
 
         rectangle.translate(0, height);
+        picture.translate(0, height);
 
     }
 

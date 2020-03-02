@@ -5,6 +5,7 @@ import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Position;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Grid;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Asteroid implements Movable {
 
@@ -14,6 +15,7 @@ public class Asteroid implements Movable {
     private Position positionInitial;
     private Grid grid;
     private Rectangle rectangle;
+    private Picture geodude;
 
     private int col;
 
@@ -30,8 +32,10 @@ public class Asteroid implements Movable {
         decrementedRow -= 2;
 
         this.rectangle = new Rectangle(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), this.grid.getCellSize(), this.grid.getCellSize());
-
+        this.geodude = new Picture(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), "//users/codecadet/Desktop/geodude.png");
         this.position.setRectangle(this.rectangle);
+        this.position.setPicture(this.geodude);
+
 
         positionInitial = new Position(this.position.getCol(), this.position.getRow(), grid);
 
@@ -43,6 +47,7 @@ public class Asteroid implements Movable {
         rectangle.setColor(Color.YELLOW);
 
         rectangle.fill();
+        geodude.draw();
 
     }
 
