@@ -91,9 +91,13 @@ public class Game implements KeyboardHandler {
 
         while (!(contactDetector.getCrashDetected())) {
 
+            Thread.sleep(35);
+
+            player.move();
+
             for (Asteroid each : asteroids) {
 
-                Thread.sleep(1);
+                Thread.sleep(0); // For some reason this works, only god knows
 
                 each.move();
 
@@ -102,6 +106,9 @@ public class Game implements KeyboardHandler {
             }
 
         }
+
+
+
         this.restart = false;
         for (Asteroid a : asteroids) {
             a.getRectangle().delete();
