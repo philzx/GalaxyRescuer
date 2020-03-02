@@ -17,10 +17,7 @@ public class Player implements Movable, KeyboardHandler {
     private int xSpeed;
     private int ySpeed;
 
-    private boolean up;
-    private boolean down;
-    private boolean left;
-    private boolean right;
+    private Directions direction = Directions.STOP;
 
     private Keyboard keyboard;
     private Rectangle rectangle;
@@ -31,10 +28,6 @@ public class Player implements Movable, KeyboardHandler {
         this.xSpeed = 0;
         this.ySpeed = 0;
 
-        this.up = false;
-        this.down = false;
-        this.left = false;
-        this.right = false;
 
         this.grid = grid;
 
@@ -112,33 +105,25 @@ public class Player implements Movable, KeyboardHandler {
 
             case KeyboardEvent.KEY_UP:
 
-                this.up = true;
-
-                move();
+               direction = Directions.UP;
 
                 break;
 
             case KeyboardEvent.KEY_DOWN:
 
-                this.down = true;
-
-                move();
+               direction = Directions.DOWN;
 
                 break;
 
             case KeyboardEvent.KEY_LEFT:
 
-                this.left = true;
-
-                move();
+               direction = Directions.LEFT;
 
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
 
-                this.right = true;
-
-                move();
+               direction = Directions.RIGHT;
 
                 break;
 
@@ -153,34 +138,11 @@ public class Player implements Movable, KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
-
-                this.up = false;
-
-                move();
-
-                break;
-
             case KeyboardEvent.KEY_DOWN:
-
-                this.down = false;
-
-                move();
-
-                break;
-
             case KeyboardEvent.KEY_LEFT:
-
-                this.left = false;
-
-                move();
-
-                break;
-
             case KeyboardEvent.KEY_RIGHT:
 
-                this.right = false;
-
-                move();
+                direction = Directions.STOP;
 
                 break;
 
@@ -191,7 +153,7 @@ public class Player implements Movable, KeyboardHandler {
     @Override
     public void move() {
 
-        if (this.up) {
+        if (direction == Directions.UP) {
 
             ySpeed = -1;
 
@@ -201,7 +163,7 @@ public class Player implements Movable, KeyboardHandler {
 
         }
 
-        if (this.down) {
+        if (direction == Directions.DOWN) {
 
             ySpeed = 1;
 
@@ -212,7 +174,7 @@ public class Player implements Movable, KeyboardHandler {
         }
 
 
-        if (this.left) {
+        if (direction == Directions.LEFT) {
 
             xSpeed = -1;
 
@@ -222,7 +184,7 @@ public class Player implements Movable, KeyboardHandler {
 
         }
 
-        if (this.right) {
+        if (direction == Directions.RIGHT) {
 
             xSpeed = 1;
 
