@@ -1,8 +1,8 @@
 package org.academiadecodigo.ramsters.projects.galaxyRescuer;
 
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.ContactDetector;
-import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.Galaxy;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Grid;
+import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.Galaxy;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.Asteroid;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.AsteroidFactory;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.Player;
@@ -13,6 +13,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game implements KeyboardHandler {
 
+    KeyboardEvent sPressed;
     private ContactDetector contactDetector;
     private Galaxy galaxy;
     private Grid grid;
@@ -20,11 +21,10 @@ public class Game implements KeyboardHandler {
     private AsteroidFactory asteroidFactory;
     private Asteroid[] asteroids;
     private boolean restart = false;
-
     private Keyboard keyboard2;
-    KeyboardEvent sPressed;
 
     public Game() {
+
         this.keyboard2 = new Keyboard(this);
 
     }
@@ -81,6 +81,7 @@ public class Game implements KeyboardHandler {
         KeyboardEvent sPressed = new KeyboardEvent();
 
         sPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
         sPressed.setKey(KeyboardEvent.KEY_S);
 
         keyboard2.addEventListener(sPressed);
@@ -110,32 +111,39 @@ public class Game implements KeyboardHandler {
 
 
         while (!(contactDetector.getCrashDetected())) {
-            Thread.sleep(35);
+
+            Thread.sleep(40);
 
             player.move();
 
             for (Asteroid each : asteroids) {
 
-                Thread.sleep(1);
+                contactDetector.checkForCrashed(this.player, each);
 
                 each.move();
-
-                contactDetector.checkForCrashed(this.player, each);
 
             }
 
         }
+
         for (Asteroid a : asteroids) {
+
             a.getRectangle().delete();
+
         }
 
         this.player.getRectangle().delete();
 
-                while (!this.restart) {
-                    Thread.sleep(1);
-                    if (restart) {
-                        reset();
+        while (!this.restart) {
+
+            Thread.sleep(1);
+
+            if (restart) {
+
+                reset();
+
             }
+
         }
 
     }
