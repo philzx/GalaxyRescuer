@@ -11,6 +11,7 @@ public class Asteroid implements Movable {
     private static int decrementedRow = -1;
 
     private Position position;
+    private Position positionInitial;
     private Grid grid;
     private Rectangle rectangle;
 
@@ -31,6 +32,8 @@ public class Asteroid implements Movable {
         this.rectangle = new Rectangle(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), this.grid.getCellSize(), this.grid.getCellSize());
 
         this.position.setRectangle(this.rectangle);
+
+        positionInitial = new Position(this.position.getCol(), this.position.getRow(), grid);
 
     }
 
@@ -63,6 +66,12 @@ public class Asteroid implements Movable {
     public Position getPosition() {
 
         return position;
+
+    }
+
+    public Position getPositionInitial(){
+
+        return positionInitial;
 
     }
 

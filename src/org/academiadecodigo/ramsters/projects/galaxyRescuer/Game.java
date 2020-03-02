@@ -29,9 +29,26 @@ public class Game implements KeyboardHandler {
 
     }
 
+    public void reset() {
+        for (Asteroid asteroid : asteroids) {
+            asteroid.getPosition().setCol(asteroid.getPositionInitial().getCol());
+            asteroid.getPosition().setRowPlayer(asteroid.getPositionInitial().getRow());
+            asteroid.getRectangle().fill();
+
+        }
+        player.getPosition().setCol(this.grid.getCols() / 2);
+        player.getPosition().setRowPlayer(this.grid.getRows());
+        this.player.getRectangle().fill();
+
+    }
+
 
     public void setRestart() {
         this.restart = true;
+    }
+
+    public boolean getRestart() {
+        return this.restart;
     }
 
     @Override
@@ -46,6 +63,7 @@ public class Game implements KeyboardHandler {
             setRestart();
             contactDetector.unCrashDetected();
             System.out.println(this.restart);
+
         }
     }
 
@@ -71,6 +89,14 @@ public class Game implements KeyboardHandler {
 
         this.player.init();
 
+        this.asteroids = this.asteroidFactory.createAsteroid((this.grid.getRows() / 2) - 1, this.grid);
+
+        for (Asteroid each : asteroids) {
+
+            each.init();
+
+        }
+
 
     }
 
@@ -80,13 +106,7 @@ public class Game implements KeyboardHandler {
 
         this.player.getRectangle().fill();
 
-        this.asteroids = this.asteroidFactory.createAsteroid((this.grid.getRows() / 2) - 1, this.grid);
-
-        for (Asteroid each : asteroids) {
-
-            each.init();
-
-        }
+        this.restart = false;
 
 
         while (!(contactDetector.getCrashDetected())) {
@@ -102,7 +122,6 @@ public class Game implements KeyboardHandler {
             }
 
         }
-        this.restart = false;
         for (Asteroid a : asteroids) {
             a.getRectangle().delete();
         }
@@ -110,16 +129,11 @@ public class Game implements KeyboardHandler {
         this.player.getRectangle().delete();
 
         while (!this.restart) {
-            Thread.sleep(100);
+            Thread.sleep(1);
+            if (restart) {
+                reset();
+            }
         }
-
-        //need to create a new player if re.init() the old one it moves 2 units, might be due to keyboard events repeating
-        // this is super slow, and makes game restart with a big lag, player can creep up too easily
-        this.player = new Player(this.grid);
-        this.player.init();
-
-        this.start();
-
 
     }
 

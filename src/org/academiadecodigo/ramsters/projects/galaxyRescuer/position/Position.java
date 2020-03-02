@@ -43,6 +43,17 @@ public class Position {
 
     }
 
+    public void setRowPlayer(int row){
+
+        int previousHeight = grid.rowToY(this.row);
+
+        this.row = row;
+
+        int height = grid.rowToY(row);
+
+        rectangle.translate(0, height - previousHeight);
+    }
+
     public void setCol(int col) {
 
         int previousWidth = grid.colToX(this.col);

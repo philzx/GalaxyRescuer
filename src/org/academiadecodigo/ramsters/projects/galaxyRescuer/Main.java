@@ -10,6 +10,12 @@ public class Main {
 
         game.start();
 
+        while (true) {
+            if(game.getRestart()) {
+                game.start();
+            }
+        }
+
     }
 
 }
