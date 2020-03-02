@@ -66,4 +66,7 @@ public class Asteroid implements Movable {
 
     }
 
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
 }

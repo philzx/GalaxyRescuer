@@ -65,6 +65,7 @@ public class Player implements Movable, KeyboardHandler {
         KeyboardEvent rightPressed = new KeyboardEvent();
         KeyboardEvent rightReleased = new KeyboardEvent();
 
+
         upPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         upReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         upPressed.setKey(KeyboardEvent.KEY_UP);
@@ -140,6 +141,7 @@ public class Player implements Movable, KeyboardHandler {
                 move();
 
                 break;
+
 
         }
 

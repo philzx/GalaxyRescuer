@@ -6,6 +6,7 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class ContactDetector {
 
+    private boolean crashDetected = false;
 
     public boolean checkForCrashed(Player player, Asteroid asteroid) {
 
@@ -14,11 +15,21 @@ public class ContactDetector {
             player.getRectangle().setColor(Color.PINK);
 
             player.getRectangle().fill();
+
+            crashDetected = true;
         }
 
         return true;
 
     }
 
+    public boolean getCrashDetected() {
 
+        return crashDetected;
+
+    }
+
+    public void unCrashDetected() {
+        this.crashDetected = false;
+    }
 }
