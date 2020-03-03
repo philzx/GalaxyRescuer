@@ -30,12 +30,15 @@ public class Game implements KeyboardHandler {
     }
 
     public void reset() {
+
         for (Asteroid asteroid : asteroids) {
-            asteroid.getPosition().setCol(asteroid.getPositionInitial().getCol());
+
+            asteroid.getPosition().setCol((int) (Math.ceil(Math.random() * this.grid.getCols())));
             asteroid.getPosition().setRowPlayer(asteroid.getPositionInitial().getRow());
             asteroid.getRectangle().fill();
 
         }
+
         player.getPosition().setCol(this.grid.getCols() / 2);
         player.getPosition().setRowPlayer(this.grid.getRows());
         this.player.getRectangle().fill();
@@ -58,10 +61,15 @@ public class Game implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+
             System.out.println("test");
+
             setRestart();
+
             contactDetector.unCrashDetected();
+
             System.out.println(this.restart);
 
         }
@@ -112,11 +120,13 @@ public class Game implements KeyboardHandler {
 
         while (!(contactDetector.getCrashDetected())) {
 
-            Thread.sleep(40);
+            Thread.sleep(30);
 
             player.move();
 
             if (contactDetector.playerAtTop(this.player)) {
+
+                System.out.println("You win bitch");
 
                 break;
 
@@ -127,6 +137,8 @@ public class Game implements KeyboardHandler {
                 contactDetector.checkForCrashed(this.player, each);
 
                 each.move();
+
+                contactDetector.checkForCrashed(this.player, each);
 
             }
 
