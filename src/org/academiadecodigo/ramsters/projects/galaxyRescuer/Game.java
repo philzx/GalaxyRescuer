@@ -36,12 +36,14 @@ public class Game implements KeyboardHandler {
             asteroid.getPosition().setCol((int) (Math.ceil(Math.random() * this.grid.getCols())));
             asteroid.getPosition().setRowPlayer(asteroid.getPositionInitial().getRow());
             asteroid.getRectangle().fill();
+            asteroid.getPicture().draw();
 
         }
 
         player.getPosition().setCol(this.grid.getCols() / 2);
         player.getPosition().setRowPlayer(this.grid.getRows());
         this.player.getRectangle().fill();
+        this.player.getPicture().draw();
 
     }
 
@@ -147,10 +149,11 @@ public class Game implements KeyboardHandler {
         for (Asteroid a : asteroids) {
 
             a.getRectangle().delete();
-
+            a.getPicture().delete();
         }
 
         this.player.getRectangle().delete();
+        this.player.getPicture().delete();
 
         while (!this.restart) {
 

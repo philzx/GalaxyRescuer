@@ -15,7 +15,7 @@ public class Asteroid implements Movable {
     private Position positionInitial;
     private Grid grid;
     private Rectangle rectangle;
-    private Picture geodude;
+    private Picture picture;
 
     private int col;
 
@@ -32,9 +32,9 @@ public class Asteroid implements Movable {
         decrementedRow -= 2;
 
         this.rectangle = new Rectangle(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), this.grid.getCellSize(), this.grid.getCellSize());
-        this.geodude = new Picture(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), "//users/codecadet/Desktop/geodude.png");
+        this.picture = new Picture(rectangle.getX(), rectangle.getY(), "//users/codecadet/Desktop/ship.png");
         this.position.setRectangle(this.rectangle);
-        this.position.setPicture(this.geodude);
+        this.position.setPicture(this.picture);
 
 
         positionInitial = new Position(this.position.getCol(), this.position.getRow(), grid);
@@ -47,7 +47,7 @@ public class Asteroid implements Movable {
         rectangle.setColor(Color.YELLOW);
 
         rectangle.fill();
-        geodude.draw();
+        picture.draw();
 
     }
 
@@ -82,5 +82,9 @@ public class Asteroid implements Movable {
 
     public Rectangle getRectangle() {
         return rectangle;
+    }
+
+    public Picture getPicture(){
+        return picture;
     }
 }

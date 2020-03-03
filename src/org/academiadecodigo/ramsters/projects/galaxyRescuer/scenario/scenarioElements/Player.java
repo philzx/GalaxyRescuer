@@ -9,6 +9,7 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
 public class Player implements Movable, KeyboardHandler {
@@ -23,6 +24,7 @@ public class Player implements Movable, KeyboardHandler {
     private Keyboard keyboard;
     private Rectangle rectangle;
     private Grid grid;
+    private Picture picture;
 
     public Player(Grid grid) {
 
@@ -40,12 +42,16 @@ public class Player implements Movable, KeyboardHandler {
 
         this.position.setRectangle(this.rectangle);
 
+        this.picture = new Picture(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), "//users/codecadet/Desktop/ship.png");
+        this.position.setPicture(this.picture);
+
     }
 
     public void init() {
 
         rectangle.setColor(Color.GREEN);
         rectangle.fill();
+        picture.draw();
 
         KeyboardEvent upPressed = new KeyboardEvent();
         KeyboardEvent upReleased = new KeyboardEvent();
@@ -210,5 +216,9 @@ public class Player implements Movable, KeyboardHandler {
 
     public Rectangle getRectangle() {
         return rectangle;
+    }
+
+    public Picture getPicture(){
+        return picture;
     }
 }
