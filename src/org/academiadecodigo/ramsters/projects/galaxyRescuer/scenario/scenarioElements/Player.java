@@ -167,7 +167,7 @@ public class Player implements Movable, KeyboardHandler {
 
             ySpeed = 1;
 
-            if (this.position.getRow() + ySpeed >= this.grid.getRows()) return;
+            if (this.position.getRow() + ySpeed > this.grid.getRows()) return;
 
             position.updateRow(ySpeed);
 
@@ -188,7 +188,7 @@ public class Player implements Movable, KeyboardHandler {
 
             xSpeed = 1;
 
-            if (this.position.getCol() + xSpeed >= this.grid.getCols()) return;
+            if (this.position.getCol() + xSpeed > this.grid.getCols()) return;
 
             position.updateCol(xSpeed);
 
