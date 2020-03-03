@@ -116,6 +116,12 @@ public class Game implements KeyboardHandler {
 
             player.move();
 
+            if (contactDetector.playerAtTop(this.player)) {
+
+                break;
+
+            }
+
             for (Asteroid each : asteroids) {
 
                 contactDetector.checkForCrashed(this.player, each);
