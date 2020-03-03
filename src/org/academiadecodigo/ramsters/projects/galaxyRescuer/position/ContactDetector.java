@@ -32,4 +32,12 @@ public class ContactDetector {
     public void unCrashDetected() {
         this.crashDetected = false;
     }
+
+    public boolean playerAtTop(Player player) {
+
+        if (player.getPosition().getRow() == 1) {
+            return true;
+        }
+        return false;
+    }
 }

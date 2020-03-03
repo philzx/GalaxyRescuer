@@ -1,11 +1,11 @@
 package org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements;
 
-public enum Directions {
+public enum Direction {
 
-    RIGHT,
-    LEFT,
     UP,
     DOWN,
+    RIGHT,
+    LEFT,
     STOP
 
 }

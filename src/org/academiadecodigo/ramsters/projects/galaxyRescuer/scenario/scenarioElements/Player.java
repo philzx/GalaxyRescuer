@@ -17,7 +17,8 @@ public class Player implements Movable, KeyboardHandler {
     private int xSpeed;
     private int ySpeed;
 
-    private Directions direction = Directions.STOP;
+    private Direction verticalDirection = Direction.STOP;
+    private Direction horizontalDirection = Direction.STOP;
 
     private Keyboard keyboard;
     private Rectangle rectangle;
@@ -105,25 +106,25 @@ public class Player implements Movable, KeyboardHandler {
 
             case KeyboardEvent.KEY_UP:
 
-               direction = Directions.UP;
+               verticalDirection = Direction.UP;
 
                 break;
 
             case KeyboardEvent.KEY_DOWN:
 
-               direction = Directions.DOWN;
+               verticalDirection = Direction.DOWN;
 
                 break;
 
             case KeyboardEvent.KEY_LEFT:
 
-               direction = Directions.LEFT;
+               horizontalDirection = Direction.LEFT;
 
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
 
-               direction = Directions.RIGHT;
+               horizontalDirection = Direction.RIGHT;
 
                 break;
 
@@ -139,10 +140,15 @@ public class Player implements Movable, KeyboardHandler {
 
             case KeyboardEvent.KEY_UP:
             case KeyboardEvent.KEY_DOWN:
+
+                verticalDirection = Direction.STOP;
+
+                break;
+
             case KeyboardEvent.KEY_LEFT:
             case KeyboardEvent.KEY_RIGHT:
 
-                direction = Directions.STOP;
+                horizontalDirection = Direction.STOP;
 
                 break;
 
@@ -153,7 +159,7 @@ public class Player implements Movable, KeyboardHandler {
     @Override
     public void move() {
 
-        if (direction == Directions.UP) {
+        if (verticalDirection == Direction.UP) {
 
             ySpeed = -1;
 
@@ -163,18 +169,18 @@ public class Player implements Movable, KeyboardHandler {
 
         }
 
-        if (direction == Directions.DOWN) {
+        if (verticalDirection == Direction.DOWN) {
 
             ySpeed = 1;
 
-            if (this.position.getRow() + ySpeed >= this.grid.getRows()) return;
+            if (this.position.getRow() + ySpeed > this.grid.getRows()) return;
 
             position.updateRow(ySpeed);
 
         }
 
 
-        if (direction == Directions.LEFT) {
+        if (horizontalDirection == Direction.LEFT) {
 
             xSpeed = -1;
 
@@ -184,11 +190,11 @@ public class Player implements Movable, KeyboardHandler {
 
         }
 
-        if (direction == Directions.RIGHT) {
+        if (horizontalDirection == Direction.RIGHT) {
 
             xSpeed = 1;
 
-            if (this.position.getCol() + xSpeed >= this.grid.getCols()) return;
+            if (this.position.getCol() + xSpeed > this.grid.getCols()) return;
 
             position.updateCol(xSpeed);
 
