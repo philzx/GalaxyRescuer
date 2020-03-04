@@ -22,7 +22,6 @@ public class Player implements Movable, KeyboardHandler {
     private Direction horizontalDirection = Direction.STOP;
 
     private Keyboard keyboard;
-    private Rectangle rectangle;
     private Grid grid;
     private Picture picture;
 
@@ -38,19 +37,14 @@ public class Player implements Movable, KeyboardHandler {
 
         this.position = new Position(this.grid.getCols()/2, this.grid.getRows(), this.grid);
 
-        this.rectangle = new Rectangle(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), this.grid.getCellSize(), this.grid.getCellSize());
 
-        this.position.setRectangle(this.rectangle);
-
-        this.picture = new Picture(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), "//users/codecadet/Desktop/ship.png");
+        this.picture = new Picture(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), "resource/img/SHIP_GIMP.jpg");
         this.position.setPicture(this.picture);
 
     }
 
     public void init() {
 
-        rectangle.setColor(Color.GREEN);
-        rectangle.fill();
         picture.draw();
 
         KeyboardEvent upPressed = new KeyboardEvent();
@@ -212,10 +206,6 @@ public class Player implements Movable, KeyboardHandler {
 
         return position;
 
-    }
-
-    public Rectangle getRectangle() {
-        return rectangle;
     }
 
     public Picture getPicture(){

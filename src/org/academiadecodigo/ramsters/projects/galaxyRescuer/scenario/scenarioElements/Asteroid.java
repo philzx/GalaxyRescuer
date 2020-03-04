@@ -14,7 +14,6 @@ public class Asteroid implements Movable {
     private Position position;
     private Position positionInitial;
     private Grid grid;
-    private Rectangle rectangle;
     private Picture picture;
 
     private int col;
@@ -31,9 +30,7 @@ public class Asteroid implements Movable {
 
         decrementedRow -= 2;
 
-        this.rectangle = new Rectangle(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), this.grid.getCellSize(), this.grid.getCellSize());
-        this.picture = new Picture(rectangle.getX(), rectangle.getY(), "//users/codecadet/Desktop/ship.png");
-        this.position.setRectangle(this.rectangle);
+        this.picture = new Picture(this.grid.colToX(position.getCol()), this.grid.rowToY(position.getRow()), "resource/img/ASTEROID_GIMP.jpg");
         this.position.setPicture(this.picture);
 
 
@@ -44,9 +41,6 @@ public class Asteroid implements Movable {
 
     public void init() {
 
-        rectangle.setColor(Color.YELLOW);
-
-        rectangle.fill();
         picture.draw();
 
     }
@@ -54,9 +48,12 @@ public class Asteroid implements Movable {
     @Override
     public void move() {
 
+        if (position.getRow() == 0){
+            init();
+        }
         if (position.getRow() >= grid.getRows()) {
 
-            position.setRow(0);
+            position.updateRow(-49);
 
             position.setCol((int) (Math.ceil(Math.random() * this.grid.getCols())));
 
@@ -78,10 +75,6 @@ public class Asteroid implements Movable {
 
         return positionInitial;
 
-    }
-
-    public Rectangle getRectangle() {
-        return rectangle;
     }
 
     public Picture getPicture(){

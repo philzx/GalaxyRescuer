@@ -2,6 +2,7 @@ package org.academiadecodigo.ramsters.projects.galaxyRescuer.position;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Grid {
 
@@ -11,20 +12,19 @@ public class Grid {
     private int cols;
     private int rows;
 
-    private Rectangle field;
+    private Picture field;
 
     public Grid(int cols, int rows) {
 
         this.cols = cols;
         this.rows = rows;
-        this.field = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
+        this.field = new Picture(PADDING, PADDING, "/Users/codecadet/java/javaprojects/groupprojects/GalaxyRescuer/resource/img/SPACE_BG_GIMP.jpg");
 
     }
 
     public void init() {
 
-        field.setColor(Color.BLACK);
-        field.fill();
+        field.draw();
 
     }
 

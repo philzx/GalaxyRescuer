@@ -2,7 +2,6 @@ package org.academiadecodigo.ramsters.projects.galaxyRescuer;
 
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.ContactDetector;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Grid;
-import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.Galaxy;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.Asteroid;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.AsteroidFactory;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.Player;
@@ -10,23 +9,31 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game implements KeyboardHandler {
 
-    KeyboardEvent sPressed;
     private ContactDetector contactDetector;
-    private Galaxy galaxy;
     private Grid grid;
     private Player player;
     private AsteroidFactory asteroidFactory;
     private Asteroid[] asteroids;
     private boolean restart = false;
     private Keyboard keyboard2;
+    private Picture gameOver;
+    private Picture winScreen;
+    private Picture beginningScreen;
+    private boolean wonGame;
+    private boolean gameStarted;
 
     public Game() {
 
         this.keyboard2 = new Keyboard(this);
-
+        this.gameOver = new Picture(Grid.PADDING, Grid.PADDING, "resource/img/OVER_GIMP.jpg");
+        this.winScreen = new Picture(Grid.PADDING, Grid.PADDING, "resource/img/WINNING_GIMP.jpg");
+        this.beginningScreen = new Picture(Grid.PADDING, Grid.PADDING, "resource/img/BEGINNING_GIMP.jpg");
+        this.wonGame = false;
+        this.gameStarted = false;
     }
 
     public void reset() {
@@ -35,14 +42,11 @@ public class Game implements KeyboardHandler {
 
             asteroid.getPosition().setCol((int) (Math.ceil(Math.random() * this.grid.getCols())));
             asteroid.getPosition().setRowPlayer(asteroid.getPositionInitial().getRow());
-            asteroid.getRectangle().fill();
-            asteroid.getPicture().draw();
 
         }
 
         player.getPosition().setCol(this.grid.getCols() / 2);
         player.getPosition().setRowPlayer(this.grid.getRows());
-        this.player.getRectangle().fill();
         this.player.getPicture().draw();
 
     }
@@ -50,6 +54,12 @@ public class Game implements KeyboardHandler {
 
     public void setRestart() {
         this.restart = true;
+    }
+
+    public void setStarted() {
+        if (!gameStarted) {
+            gameStarted = true;
+        }
     }
 
     public boolean getRestart() {
@@ -66,13 +76,9 @@ public class Game implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
 
-            System.out.println("test");
-
             setRestart();
-
+            setStarted();
             contactDetector.unCrashDetected();
-
-            System.out.println(this.restart);
 
         }
     }
@@ -97,17 +103,11 @@ public class Game implements KeyboardHandler {
         keyboard2.addEventListener(sPressed);
 
         this.grid.init();
+        this.beginningScreen.draw();
 
         this.player.init();
 
         this.asteroids = this.asteroidFactory.createAsteroid((this.grid.getRows() / 2) - 1, this.grid);
-
-        for (Asteroid each : asteroids) {
-
-            each.init();
-
-        }
-
 
     }
 
@@ -115,10 +115,15 @@ public class Game implements KeyboardHandler {
 
         contactDetector.unCrashDetected();
 
-        this.player.getRectangle().fill();
-
         this.restart = false;
 
+        while (!gameStarted) {
+
+            Thread.sleep(30);
+
+        }
+
+        this.beginningScreen.delete();
 
         while (!(contactDetector.getCrashDetected())) {
 
@@ -128,8 +133,8 @@ public class Game implements KeyboardHandler {
 
             if (contactDetector.playerAtTop(this.player)) {
 
-                System.out.println("You win bitch");
-
+                this.winScreen.draw();
+                wonGame = true;
                 break;
 
             }
@@ -148,12 +153,15 @@ public class Game implements KeyboardHandler {
 
         for (Asteroid a : asteroids) {
 
-            a.getRectangle().delete();
             a.getPicture().delete();
         }
 
-        this.player.getRectangle().delete();
+
         this.player.getPicture().delete();
+
+        if (!wonGame) {
+            this.gameOver.draw();
+        }
 
         while (!this.restart) {
 
@@ -162,6 +170,9 @@ public class Game implements KeyboardHandler {
             if (restart) {
 
                 reset();
+                this.wonGame = false;
+                this.gameOver.delete();
+                this.winScreen.delete();
 
             }
 
