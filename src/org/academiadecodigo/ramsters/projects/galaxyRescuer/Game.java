@@ -118,15 +118,22 @@ public class Game implements KeyboardHandler {
 
     public void start() throws InterruptedException {
 
+        reset();
+        this.wonGame = false;
+        this.gameOver.delete();
+        this.winScreen.delete();
+
         contactDetector.unCrashDetected();
 
-        this.restart = false;
+
 
         while (!gameStarted) {
 
             Thread.sleep(30);
 
         }
+        
+        this.restart = false;
 
         this.beginningScreen.delete();
 
