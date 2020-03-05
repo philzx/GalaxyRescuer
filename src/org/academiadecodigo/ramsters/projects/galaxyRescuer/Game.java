@@ -5,6 +5,7 @@ import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Grid;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement.Asteroid;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement.AsteroidFactory;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement.Player;
+import org.academiadecodigo.ramsters.projects.galaxyRescuer.sound.Sound;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -25,6 +26,7 @@ public class Game implements KeyboardHandler {
     private Picture beginningScreen;
     private boolean wonGame;
     private boolean gameStarted;
+    private Sound sound;
 
     public Game() {
 
@@ -32,6 +34,7 @@ public class Game implements KeyboardHandler {
         this.gameOver = new Picture(Grid.PADDING, Grid.PADDING, "resource/img/OVER_GIMP.jpg");
         this.winScreen = new Picture(Grid.PADDING, Grid.PADDING, "resource/img/WINNING_GIMP.jpg");
         this.beginningScreen = new Picture(Grid.PADDING, Grid.PADDING, "resource/img/BEGINNING_GIMP.jpg");
+        this.sound = new Sound("/resource/sound/sound.wav");
         this.wonGame = false;
         this.gameStarted = false;
     }
@@ -84,6 +87,8 @@ public class Game implements KeyboardHandler {
     }
 
     public void init() {
+        sound.play(true);
+        sound.loopIndef();
 
         this.grid = new Grid(20, 50);
 
