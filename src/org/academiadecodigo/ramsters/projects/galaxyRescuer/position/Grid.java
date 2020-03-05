@@ -18,7 +18,7 @@ public class Grid {
 
         this.cols = cols;
         this.rows = rows;
-        this.field = new Picture(PADDING, PADDING, "/Users/codecadet/java/javaprojects/groupprojects/GalaxyRescuer/resource/img/SPACE_BG_GIMP.jpg");
+        this.field = new Picture(PADDING, PADDING, "resource/img/SPACE_BG_GIMP.jpg");
 
     }
 
