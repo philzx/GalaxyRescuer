@@ -1,4 +1,4 @@
-package org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements;
+package org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement;
 
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Grid;
 

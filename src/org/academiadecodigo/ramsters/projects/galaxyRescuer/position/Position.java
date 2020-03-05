@@ -1,6 +1,5 @@
 package org.academiadecodigo.ramsters.projects.galaxyRescuer.position;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
@@ -34,16 +33,6 @@ public class Position {
     public int getRow() {
 
         return row;
-
-    }
-
-    public void setRow(int row) {
-
-        this.row = row;
-
-        int height = grid.getHeight();
-
-        picture.translate(0, -height);
 
     }
 

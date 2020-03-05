@@ -2,9 +2,9 @@ package org.academiadecodigo.ramsters.projects.galaxyRescuer;
 
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.ContactDetector;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Grid;
-import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.Asteroid;
-import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.AsteroidFactory;
-import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.Player;
+import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement.Asteroid;
+import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement.AsteroidFactory;
+import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement.Player;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;

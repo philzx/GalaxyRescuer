@@ -1,7 +1,5 @@
 package org.academiadecodigo.ramsters.projects.galaxyRescuer.position;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Grid {
@@ -40,41 +38,11 @@ public class Grid {
 
     }
 
-    public int getWidth() {
-
-        return field.getWidth();
-
-    }
-
     public int getHeight() {
 
         return field.getHeight();
 
     }
-
-    public int getX() {
-
-        return field.getX();
-
-    }
-
-    public int getY() {
-
-        return field.getY();
-
-    }
-
-    public int getCellSize() {
-
-        return cellSize;
-
-    }
-
-    /*public Position makeGridPosition() {
-
-        return new Position();
-
-    }*/
 
     public int rowToY(int row) {
 

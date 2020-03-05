@@ -1,8 +1,7 @@
 package org.academiadecodigo.ramsters.projects.galaxyRescuer.position;
 
-import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.Asteroid;
-import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements.Player;
-import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement.Asteroid;
+import org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement.Player;
 
 public class ContactDetector {
 

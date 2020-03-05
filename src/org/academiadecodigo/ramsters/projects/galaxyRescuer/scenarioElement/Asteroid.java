@@ -1,10 +1,8 @@
-package org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements;
+package org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement;
 
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Movable;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Position;
 import org.academiadecodigo.ramsters.projects.galaxyRescuer.position.Grid;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Asteroid implements Movable {

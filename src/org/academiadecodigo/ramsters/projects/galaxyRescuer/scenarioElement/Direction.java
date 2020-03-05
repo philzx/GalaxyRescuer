@@ -1,4 +1,4 @@
-package org.academiadecodigo.ramsters.projects.galaxyRescuer.scenario.scenarioElements;
+package org.academiadecodigo.ramsters.projects.galaxyRescuer.scenarioElement;
 
 public enum Direction {
 
