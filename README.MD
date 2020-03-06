@@ -1,5 +1,4 @@
 ![Galaxy Rescuer Banner](/resource/img/GalaxyRescuer.png)
-Format: ![Alt Text](url)
 
 > This game was designed and created during the 5th week of Academia de Código's bootcamp.
 
